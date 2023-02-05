@@ -1,0 +1,51 @@
+{
+  "seller": [
+    {
+      "name": "Jatin Singh",
+      "password": "abc123",
+      "email": "xyz@abc.com",
+      "id": 1
+    },
+    {
+      "name": "Akash",
+      "password": "abc123",
+      "email": "xyz1@abc.com",
+      "id": 2
+    },
+    {
+      "name": "Anita Singh",
+      "email": "anita@gmail.com",
+      "password": "12345",
+      "id": 3
+    }
+  ],
+  "products": [
+    {
+      "name": "Samsung M40",
+      "price": "15999",
+      "color": "Blue",
+      "category": "Smartphones",
+      "description": "It a samsung phone",
+      "image": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-m40-m405f.jpg",
+      "id": 1
+    },
+    {
+      "name": "IQOO SE 9",
+      "price": "34999",
+      "color": "Silver",
+      "category": "Smart Phone",
+      "description": "It's a good smartphone.",
+      "image": "https://m.media-amazon.com/images/I/41UwKwpK40L._SX300_SY300_QL70_FMwebp_.jpg",
+      "id": 2
+    },
+    {
+      "name": "HP Laptop",
+      "price": "45999",
+      "color": "Black",
+      "category": "Laptop",
+      "description": "Its a HP Laptop.",
+      "image": "https://m.media-amazon.com/images/I/41HjNEeVZEL.jpg",
+      "id": 3
+    }
+  ]
+}
