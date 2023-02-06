@@ -1,6 +1,8 @@
 .nav {
   display: flex;
   justify-content: space-between;
+  border-bottom: 1px solid lightgrey;
+  margin-bottom: 15px;
 }
 
 .nav h1 {
@@ -60,7 +62,7 @@ h1 a{
   display: list-item !important;
   border: 1px solid #ddd;
   background-color: #fff;
-  width: 300px;
+  width: 400px;
 }
 .suggested-search li {
   padding:5px;
