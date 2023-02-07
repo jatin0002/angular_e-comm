@@ -3,13 +3,14 @@ ul{
   padding: 0;
 }
 .footer {
-  padding: 10px;
+  padding: 3px;
   text-align: center;
-  position: fixed;
+  /* position: fixed; */
   bottom: 0;
   right: 0;
   left: 0;
   background-color: #fff;
+  border-top: 1px solid lightgray;
 }
 .footer ul{
   list-style-type: none;

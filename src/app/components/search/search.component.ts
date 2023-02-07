@@ -1,7 +1,14 @@
 import { Product } from 'src/app/datatype';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from './../../services/product.service';
-import { AfterContentChecked, Component, DoCheck, OnInit } from '@angular/core';
+import {
+  AfterContentChecked,
+  Component,
+  DoCheck,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 
 @Component({
   selector: 'app-search',
@@ -21,7 +28,6 @@ export class SearchComponent implements OnInit {
     query &&
       this.productService.searchProducts(query).subscribe((result) => {
         this.searchResult = result;
-        console.log(result);
       });
   }
 }

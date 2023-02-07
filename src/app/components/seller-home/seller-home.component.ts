@@ -19,7 +19,7 @@ export class SellerHomeComponent implements OnInit {
     this.products();
   }
 
-  deleteProduct(id: string) {
+  deleteProduct(id: number) {
     this.productService.deleteProduct(id).subscribe((result) => {
       if (result) {
         this.productMessage = 'Product Successfully Deleted!!';

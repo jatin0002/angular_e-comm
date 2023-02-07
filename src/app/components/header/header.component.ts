@@ -11,7 +11,9 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
   menuType: string = 'default';
   sellerName: string = '';
+  userName: string = '';
   searchResult: undefined | Product[];
+  cartItems: number = 0;
 
   constructor(private router: Router, private productService: ProductService) {}
 
@@ -26,19 +28,33 @@ export class HeaderComponent implements OnInit {
             let sellerData = sellerStore && JSON.parse(sellerStore);
             this.sellerName = sellerData[0].name;
           }
+        } else if (localStorage.getItem('user')) {
+          this.menuType = 'user';
+          if (localStorage.getItem('user')) {
+            let userStore = localStorage.getItem('user');
+            let userData = userStore && JSON.parse(userStore);
+            this.userName = userData.name;
+          }
         } else {
           this.menuType = 'default';
         }
       }
     });
+
+    let cartData = localStorage.getItem('localCart');
+    if (cartData) {
+      this.cartItems = JSON.parse(cartData).length;
+    }
+    this.productService.cartData.subscribe((items) => {
+      this.cartItems = items.length;
+    });
   }
 
   searchProduct(query: KeyboardEvent) {
-
     if (query) {
       const element = query.target as HTMLInputElement;
       this.productService.searchProducts(element.value).subscribe((result) => {
-        if(result.length >5){
+        if (result.length > 5) {
           result.length = 5;
         }
         this.searchResult = result;
@@ -46,16 +62,26 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  hideSearch(){
-    this.searchResult = undefined
+  hideSearch() {
+    this.searchResult = undefined;
   }
 
-  submitSearch(val:string){
-    this.router.navigate([`search/${val}`])
+  submitSearch(val: string) {
+    this.router.navigate([`search/${val}`]);
   }
 
-  logout() {
-    localStorage.removeItem('seller');
-    this.router.navigate(['']);
+  logout(val: string) {
+    if (val === 'seller') {
+      localStorage.removeItem('seller');
+      this.router.navigate(['']);
+    }
+    if (val === 'user') {
+      localStorage.removeItem('user');
+    }
+    this.router.navigate(['/user-auth']);
+  }
+
+  redirectToDetails(id: number) {
+    this.router.navigate([`/product-details/${id}`]);
   }
 }

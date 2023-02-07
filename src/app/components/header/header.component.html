@@ -12,7 +12,7 @@
     <button (click)="submitSearch(searchInput.value)">Search</button>
     <ul class="suggested-search" *ngIf="searchResult">
       <li *ngFor="let item of searchResult">
-        <a href="#">{{ item?.name }} </a>
+        <a (mousedown)="redirectToDetails(item.id)">{{ item?.name }} </a>
       </li>
     </ul>
   </div>
@@ -20,16 +20,24 @@
   <div [ngSwitch]="menuType">
     <ul *ngSwitchCase="'default'">
       <li><a routerLink=""> Home</a></li>
-      <li><a routerLink="seller-auth"> Seller</a></li>
-      <li><a routerLink="login"> Login</a></li>
-      <li><a routerLink="cart"> Cart(0)</a></li>
+      <li><a routerLink="/seller-auth"> Seller</a></li>
+      <li><a routerLink="/user-auth"> Login/SignUp</a></li>
+      <li><a routerLink="/cart"> Cart({{cartItems}})</a></li>
     </ul>
     <ul *ngSwitchCase="'seller'">
-      <li><a routerLink="seller-home"> Product List</a></li>
-      <li><a routerLink="seller-add-product"> Add Product</a></li>
-      <li><a (click)="logout()"> Logout</a></li>
+      <li><a routerLink="/seller-home"> Product List</a></li>
+      <li><a routerLink="/seller-add-product"> Add Product</a></li>
+      <li><a (click)="logout('seller')"> Logout</a></li>
       <li>
         <a style="color: black">{{ sellerName | titlecase }}</a>
+      </li>
+    </ul>
+    <ul *ngSwitchCase="'user'">
+      <li><a routerLink="/"> Home</a></li>
+      <li><a routerLink="/cart"> Cart({{cartItems}})</a></li>
+      <li><a (click)="logout('user')"> Logout</a></li>
+      <li>
+        <a style="color: black">{{ userName| titlecase }}</a>
       </li>
     </ul>
   </div>
